@@ -26,10 +26,10 @@
         <option value="0.5%">0.5%</option>
     </select><br><br>
 
-    <button onclick="submitForm()">Confirm</button>
+    <button id="submit-btn">Confirm</button>
 
     <script>
-        function submitForm() {
+        document.getElementById("submit-btn").addEventListener("click", function() {
             // 获取用户输入的API密钥
             const apiKey = document.getElementById("api-key").value;
             // 获取用户选择的时间维度
@@ -38,7 +38,7 @@
             const priceDifference = document.getElementById("price-difference").value;
 
             // 向后端发送请求，这里你可以使用JavaScript的Fetch API或其他库来发送POST请求
-            fetch(https://binance-web.xuyong0919.workers.dev/, {
+            fetch("https://binance-web.xuyong0919.workers.dev/", {
                 method: 'POST',
                 body: JSON.stringify({ apiKey, timeFrame, priceDifference }),
                 headers: {
@@ -52,7 +52,7 @@
                 console.log(data);
             })
             .catch(error => console.error('Error:', error));
-        }
+        });
     </script>
 </body>
 </html>
