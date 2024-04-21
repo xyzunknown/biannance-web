@@ -1,66 +1,58 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2709
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh14680\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance API </title>
+</head>
+<body>
+    <h1>Binance API Input</h1>
+    <label for="api-key">Binance API Key:</label>
+    <input type="text" id="api-key" name="api-key"><br><br>
+    
+    <label for="time-frame">Time:</label>
+    <select id="time-frame">
+        <option value="24h">24H</option>
+        <option value="4h">4H</option>
+        <option value="1h">1H</option>
+        <option value="15m">15M</option>
+    </select><br><br>
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="en">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>Binance API \uc0\u32465 \u23450 </title>\
-</head>\
-<body>\
-    <h1>Binance API \uc0\u32465 \u23450 </h1>\
-    <label for="api-key">Binance API Key:</label>\
-    <input type="text" id="api-key" name="api-key"><br><br>\
-    \
-    <label for="time-frame">\uc0\u26102 \u38388 \u32500 \u24230 :</label>\
-    <select id="time-frame">\
-        <option value="24h">24\uc0\u23567 \u26102 </option>\
-        <option value="4h">4\uc0\u23567 \u26102 </option>\
-        <option value="1h">1\uc0\u23567 \u26102 </option>\
-        <option value="15m">15\uc0\u20998 \u38047 </option>\
-    </select><br><br>\
-\
-    <label for="price-difference">\uc0\u24046 \u20540 \u30334 \u20998 \u27604 :</label>\
-    <select id="price-difference">\
-        <option value="3%">3%</option>\
-        <option value="2%">2%</option>\
-        <option value="1%">1%</option>\
-        <option value="0.5%">0.5%</option>\
-    </select><br><br>\
-\
-    <button onclick="submitForm()">\uc0\u30830 \u23450 </button>\
-\
-    <script>\
-        function submitForm() \{\
-            // \uc0\u33719 \u21462 \u29992 \u25143 \u36755 \u20837 \u30340 API\u23494 \u38053 \
-            const apiKey = document.getElementById("api-key").value;\
-            // \uc0\u33719 \u21462 \u29992 \u25143 \u36873 \u25321 \u30340 \u26102 \u38388 \u32500 \u24230 \
-            const timeFrame = document.getElementById("time-frame").value;\
-            // \uc0\u33719 \u21462 \u29992 \u25143 \u36873 \u25321 \u30340 \u24046 \u20540 \u30334 \u20998 \u27604 \
-            const priceDifference = document.getElementById("price-difference").value;\
-\
-            // \uc0\u21521 \u21518 \u31471 \u21457 \u36865 \u35831 \u27714 \u65292 \u36825 \u37324 \u20320 \u21487 \u20197 \u20351 \u29992 JavaScript\u30340 Fetch API\u25110 \u20854 \u20182 \u24211 \u26469 \u21457 \u36865 POST\u35831 \u27714 \
-            fetch(https://binance-web.xuyong0919.workers.dev/, \{\
-                method: 'POST',\
-                body: JSON.stringify(\{ apiKey, timeFrame, priceDifference \}),\
-                headers: \{\
-                    'Content-Type': 'application/json'\
-                \}\
-            \})\
-            .then(response => response.json())\
-            .then(data => \{\
-                // \uc0\u22312 \u39029 \u38754 \u19978 \u26174 \u31034 \u31526 \u21512 \u26465 \u20214 \u30340 \u24065 \u31181 \
-                // \uc0\u36825 \u37324 \u20320 \u21487 \u20197 \u26681 \u25454 \u21518 \u31471 \u36820 \u22238 \u30340 \u25968 \u25454 \u26469 \u21160 \u24577 \u29983 \u25104 \u39029 \u38754 \u20869 \u23481 \
-                console.log(data);\
-            \})\
-            .catch(error => console.error('Error:', error));\
-        \}\
-    </script>\
-</body>\
-</html>\
-}
+    <label for="price-difference">MA Percentage with current price:</label>
+    <select id="price-difference">
+        <option value="3%">3%</option>
+        <option value="2%">2%</option>
+        <option value="1%">1%</option>
+        <option value="0.5%">0.5%</option>
+    </select><br><br>
+
+    <button onclick="submitForm()">Confirm</button>
+
+    <script>
+        function submitForm() {
+            // 获取用户输入的API密钥
+            const apiKey = document.getElementById("api-key").value;
+            // 获取用户选择的时间维度
+            const timeFrame = document.getElementById("time-frame").value;
+            // 获取用户选择的差值百分比
+            const priceDifference = document.getElementById("price-difference").value;
+
+            // 向后端发送请求，这里你可以使用JavaScript的Fetch API或其他库来发送POST请求
+            fetch(https://binance-web.xuyong0919.workers.dev/, {
+                method: 'POST',
+                body: JSON.stringify({ apiKey, timeFrame, priceDifference }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 在页面上显示符合条件的币种
+                // 这里你可以根据后端返回的数据来动态生成页面内容
+                console.log(data);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
